@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+
+
+
+<input type="text" id="linkId" size="5" />
+<input type="button" value="Search" onclick="find();">
+<p id="link" />
+
+<div>
+    <ul id="links" />
+</div>
+
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js"></script>
+<script>
+
+        var uri = 'api/links';
+
+        $(document).ready(function () {
+            $.getJSON(uri)
+                .done(function (data) {
+                    $.each(data, function (key, item) {
+                        $('<li>', { text: formatItem(item) }).appendTo($('#links'));
+                    });
+                });
+        });
+
+        function formatItem(item) {
+            return item.Sequence + ': ' + item.Title + ' url: ' + item.Url;
+        }
+
+        function find() {
+            var id = $('#linkId').val();
+            $.getJSON(uri + '/' + id)
+                .done(function (data) {
+                    $('#link').text(formatItem(data));
+                })
+                .fail(function (jqXHR, textStatus, err) {
+                    $('#link').text('Error: ' + err);
+                });
+
+        }
+
+</script>
+
