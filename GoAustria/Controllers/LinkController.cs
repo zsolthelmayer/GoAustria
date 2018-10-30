@@ -11,9 +11,14 @@ namespace GoAustria.Controllers
     {
         GoAustriaContext goAustriaContext = new GoAustriaContext();
 
-        public ActionResult Index(int sequence)
+        public ActionResult Index()
+        {     
+            return View();
+        }
+
+        public ActionResult Link(int id)
         {
-            var link = goAustriaContext.Links.FirstOrDefault((l) => l.Sequence == sequence);
+            var link = goAustriaContext.Links.FirstOrDefault((l) => l.Sequence == id);
             if (link != null)
             {
                 return Redirect(link.Url);
@@ -21,7 +26,5 @@ namespace GoAustria.Controllers
 
             return View();
         }
-
-
     }
 }
