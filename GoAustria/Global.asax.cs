@@ -14,5 +14,14 @@ namespace GoAustria
             GlobalConfiguration.Configure(WebApiConfig.Register);
             RouteConfig.RegisterRoutes(RouteTable.Routes);            
         }
+
+        protected void Application_Error(object sender, EventArgs e)
+        {
+            Exception exception = Server.GetLastError();
+            if (exception != null)
+            {
+                Response.Redirect("Error");
+            }
+        }
     }
 }

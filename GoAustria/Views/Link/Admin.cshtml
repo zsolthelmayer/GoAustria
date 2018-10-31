@@ -4,9 +4,15 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Admin</h2>
+<div class="container">
+    <div class="row">
+        <h2>Admin</h2>
+        <b><i class="fa fa-sign-out" id="logout" style="cursor: pointer;"></i></b>
+    </div>
+</div>
 
-<a class="btn btn-default" style="margin-bottom: 10px"><b><i class="glyphicon glyphicon-plus"></i></b> Add new</a>
+
+<button class="btn btn-primary" style="margin-bottom: 10px;" id="addNewBtn"><b><i class="fa fa-plus"></i></b> Add new</button>
 <table id="linkTable" class="table table-striped table-bordered">
     <thead>
         <tr>
@@ -20,6 +26,84 @@
 </table>
 
 
+<!-- Save Modal -->
+<div class="modal fade" id="newLinkModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="width: 330px;">
+            <div class="modal-header">
+                <div class="container">
+                    <div class="row">
+                        <span><b>Add new link</b></span>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="sequence">Sequence</label>
+                        <input type="number" class="form-control" id="sequence" placeholder="Sequence" value="">
+                    </div>
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input type="text" class="form-control" id="title" placeholder="Title" value="">
+                    </div>
+                    <div class="form-group">
+                        <label for="url">Url</label>
+                        <input type="url" class="form-control" id="url" placeholder="Url" value="">
+                    </div>
+                    <div class="form-group text-right">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="saveNewLink">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Edit Modal -->
+<div class="modal fade" id="editLinkModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="width: 330px;">
+            <div class="modal-header">
+                <div class="container">
+                    <div class="row">
+                        <span><b>Edit link</b></span>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <input type="hidden" id="id" />
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="editSequence">Sequence</label>
+                        <input type="number" class="form-control" id="editSequence" placeholder="Sequence">
+                    </div>
+                    <div class="form-group">
+                        <label for="editTitle">Title</label>
+                        <input type="text" class="form-control" id="editTitle" placeholder="Title">
+                    </div>
+                    <div class="form-group">
+                        <label for="editUrl">Url</label>
+                        <input type="url" class="form-control" id="editUrl" placeholder="Url">
+                    </div>
+                    <div class="form-group text-right">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="editLink">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="https://cdn.datatables.net/1.10.18/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
 
@@ -29,6 +113,7 @@
     <script src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
 
     <script>
+
         $(document).ready(function () {
 
 
@@ -42,27 +127,94 @@
                     { "data": "Id", "visible": false },
                     { "data": "Sequence" },
                     { "data": "Title" },
-                    { "data": "Url" },
-                    { "defaultContent": "<button id='remove' class='btn btn-default'><i class='glyphicon glyphicon-trash'></i></button> <button id='edit' class='btn btn-default'><i class='glyphicon glyphicon-pencil'></i></button>"}
+                    {
+                        "data": "Url",
+                        "render": function (data, type, row) {
+                            return "<a href='" + data + "'>" + data + "</a>";
+                        }
+                    },
+                    { "defaultContent": "<button id='remove' class='btn btn-primary'><i class='fa fa-trash'></i></button> <button id='edit' class='btn btn-primary'><i class='fa fa-pencil'></i></button>" }
                 ]
+            });
+
+            $('#addNewBtn').click(function () {                
+                $('#sequence').val("");
+                $('#title').val("");
+                $('#url').val("");
+                $('#newLinkModal').modal('show');
+            });
+
+            $('#saveNewLink').click(function () {
+                var newLink = {
+                    Id: 'null',
+                    Sequence: $('#sequence').val(),
+                    Title: $('#title').val(),
+                    Url: $('#url').val()
+                };
+
+                $.ajax({
+                    url: 'api/links/',
+                    type: 'POST',
+                    data: newLink,
+                    success: function (result) {
+                        $('#newLinkModal').modal('toggle');
+                        table.ajax.reload();
+                    }
+                });
+            });
+
+            $('#editLink').click(function () {
+                var editedLink = {
+                    Id: $('#id').val(),
+                    Sequence: $('#editSequence').val(),
+                    Title: $('#editTitle').val(),
+                    Url: $('#editUrl').val()
+                };
+
+                $.ajax({
+                    url: 'api/links/' + editedLink.Id,
+                    type: 'PUT',
+                    data: editedLink,
+                    success: function (result) {
+                        $('#editLinkModal').modal('toggle');
+                        table.ajax.reload();
+                    }
+                });
             });
 
             $('#linkTable tbody').on('click', 'button', function () {
 
                 var data = table.row($(this).parents('tr')).data();
+                console.log(data.Id);
+
                 if (this.id == "edit") {
-                    console.log("E");                
-                } else if (this.id == "remove") {
-                    console.log(data.Id);                
+                    $('#id').val(data.Id);
+                    $('#editSequence').val(data.Sequence);
+                    $('#editTitle').val(data.Title);
+                    $('#editUrl').val(data.Url);
+                    $('#editLinkModal').modal('show');
+                } else if (this.id == "remove") {                    
                     $.ajax({
                         url: 'api/links/' + data.Id,
-                        type: 'DELETE',                        
+                        type: 'DELETE',
                         success: function (result) {
-                            // Do something with the result
+                            table.ajax.reload();
                         }
                     });
                 }
             });
+
+            $('#logout').click(function () {
+                $.ajax({
+                    url: 'Logout',
+                    type: 'POST',
+                    data: null,
+                    success: function (result) {
+                        location.reload();
+                    }
+                });
+            });
+
         });
     </script>
 }
