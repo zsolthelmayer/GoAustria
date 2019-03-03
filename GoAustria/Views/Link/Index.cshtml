@@ -4,22 +4,56 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<div class="header-container">
 
 
+	<div class="img-container">
+		<div class="inner-container">
+			<h1>Munkavállals Ausztriában lépésről lépésre</h1>
+			<h2>Ne várj! <br /> Tudj meg mindent az osztrák munkavállalásról! <br /> Ez a könyv az összes kérdésedet megválaszolja! </h2>
 
-
-<input type="text" id="linkId" size="5" />
-<input type="button" value="Search" onclick="find();">
-<p id="link" />
-
-<div>
-    <ul id="links" />
+			<a class="btn" href="#" > ÉRDEKEL </a>
+		</div>
+	</div>
 </div>
 
+<div id="about_book" style="background-color: lightgray;">
+    <div class="row">
+        <div class="col-sm-4">
+            <img src="~/images/book2.png" style="height: 30%; padding: 40px;" />
+        </div>
+        <div class="col-sm-8"> 
+            <h2>A könyvről</h2> 
+            Szinte nincs olyan ember Magyarországon, akinek egy rokona, barátja, ismerőse ne döntött volna úgy, hogy tőlünk nyugatabbra próbálja meg felépíteni, vagy legalább megalapozni az életét.
+            Látva a pozitív kimenetelű sztorikat, érthető módon nagy a kísértés, hogy erre az útra lépj. A cél pedig sokszor Ausztria, mert jók a körülmények, sok a lehetőség, és gyakran haza lehet látogatni a családhoz, barátookhoz. Legalábbis ez terjeng a köztudatban.
+            Amikor azonban nekilátsz a megvalósításnak, rájössz, hogy azért ez nem annyira egyszerű.
+
+        </div>
+    </div>
+</div>
+
+<div id="scope">
+    <h2>Tartalomjegyzék</h2>
+</div>
+<div id="about_us" style="background-color: lightgray">
+    <h2>Rólunk</h2>
+</div>
+<div id="book_helps">
+    <div data-aos="fade-down">
+        <h2>A könyv segít mert</h2>
+    </div>
+</div>
+
+
+
 <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js"></script>
+
 <script>
 
+
+    
+
+    /*
         var uri = 'api/links';
 
         $(document).ready(function () {
@@ -46,6 +80,6 @@
                 });
 
         }
-
+        */
 </script>
 
