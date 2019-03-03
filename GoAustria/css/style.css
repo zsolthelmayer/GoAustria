@@ -20,10 +20,10 @@
 		line-height: 1.75em;
 	}
 
-	a {
-		color: #3ac984;
-		text-decoration: underline;
-	}
+a {
+	color: #D74E4E;
+	text-decoration: underline;
+}
 
 		a:hover {
 			text-decoration: none;
@@ -137,7 +137,7 @@
 		input[type="password"]:focus,
 		input[type="email"]:focus,
 		textarea:focus {
-			border-color: #3ac984;
+			border-color: #D74E4E;
 		}
 
 	input[type="text"],
@@ -336,7 +336,7 @@
 			width: 80px;
 			height: 80px;
 			margin-right: 1em;
-			background: #3ac984;
+			background: #D74E4E;
 			line-height: 80px;
 			text-align: center;
 			border-radius: 10px;
@@ -391,33 +391,33 @@
 
 /* Button */
 
-	input[type="submit"],
-	input[type="reset"],
-	input[type="button"],
-	.button {
-		-moz-appearance: none;
-		-webkit-appearance: none;
-		-o-appearance: none;
-		-ms-appearance: none;
-		appearance: none;
-		-moz-transition: background-color 0.2s ease-in-out;
-		-webkit-transition: background-color 0.2s ease-in-out;
-		-o-transition: background-color 0.2s ease-in-out;
-		-ms-transition: background-color 0.2s ease-in-out;
-		transition: background-color 0.2s ease-in-out;
-		background: #3ac984;
-		border-radius: 40px;
-		border: 0;
-		color: white;
-		cursor: pointer;
-		display: inline-block;
-		padding: 0.80em 2em;
-		text-align: center;
-		text-decoration: none;
-		font-size: 1.4em;
-		font-weight: 600;
-		min-width: 10em;
-	}
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+.button {
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	-o-appearance: none;
+	-ms-appearance: none;
+	appearance: none;
+	-moz-transition: background-color 0.2s ease-in-out;
+	-webkit-transition: background-color 0.2s ease-in-out;
+	-o-transition: background-color 0.2s ease-in-out;
+	-ms-transition: background-color 0.2s ease-in-out;
+	transition: background-color 0.2s ease-in-out;
+	background: #D74E4E;
+	border-radius: 40px;
+	border: 0;
+	color: white;
+	cursor: pointer;
+	display: inline-block;
+	padding: 0.80em 2em;
+	text-align: center;
+	text-decoration: none;
+	font-size: 1.4em;
+	font-weight: 600;
+	min-width: 10em;
+}
 
 		input[type="submit"]:hover,
 		input[type="reset"]:hover,
@@ -530,7 +530,7 @@
 			}
 
 			#nav > ul > li.active {
-				background: #3ac984;
+				background: #D74E4E;
 			}
 
 				#nav > ul > li.active a {
@@ -543,14 +543,14 @@
 
 /* Dropotron */
 
-	.dropotron {
-		margin-top: -2px;
-		background: #3ac984;
-		border-radius: 10px;
-		color: white;
-		min-width: 12em;
-		padding: 1em 0;
-	}
+.dropotron {
+	margin-top: -2px;
+	background: #D74E4E;
+	border-radius: 10px;
+	color: white;
+	min-width: 12em;
+	padding: 1em 0;
+}
 
 		.dropotron > li {
 			line-height: 2em;
