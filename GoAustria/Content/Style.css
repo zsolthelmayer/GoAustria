@@ -1,5 +1,11 @@
-﻿*
+﻿* {
+	margin: 0;
+	height: 100%;
+}
 
+.gray-block {
+	height: 200px;
+}
 
 .header-container {
 	margin: 0;
@@ -51,7 +57,6 @@ body {
 	color: #fff;
 	background-color: #D74E4E;
 	border: 0px;
-	border-radius: 25px;
 }
 
 	.btn:hover {
