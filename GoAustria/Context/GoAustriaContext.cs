@@ -10,5 +10,6 @@ namespace GoAustria.Context
     public class GoAustriaContext : DbContext
     {
         public DbSet<Link> Links {set; get;}
+        public DbSet<User> Users { set; get; }
     }
 }
