@@ -77,7 +77,7 @@ Kóbor Alexandra E.V.
 www.ausztriamunka.hu
 				";
 
-			new MessageHelper().SendMessage("info@ausztriamunka.hu",value.OrdEmail, "Megrendelés - (Rendelésszám: " + now.ToString("yyyyMMddHHmmss")+ ")", body);
+			new MessageHelper().SendMessage("info@ausztriamunka.hu", value.OrdEmail, "Megrendelés - (Rendelésszám: " + now.ToString("yyyyMMddHHmmss")+ ")", body);
 			new MessageHelper().SendMessage("info@ausztriamunka.hu", "info@ausztriamunka.hu", "Megrendelés - (Rendelésszám: " + now.ToString("yyyyMMddHHmmss") + ")", body);
 
 		}

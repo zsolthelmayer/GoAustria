@@ -27,7 +27,7 @@ namespace GoAustria.utils
 			mail.Subject = subject;
 			mail.To.Add(new MailAddress(to));		
 			mail.Body = body;
-
+			mail.IsBodyHtml = true;
 
 			smtpClient.SendMailAsync(mail);
 		}
