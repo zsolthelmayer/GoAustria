@@ -1,5 +1,6 @@
 ﻿using GoAustria.Context;
 using GoAustria.Models;
+using GoAustria.utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,7 +31,36 @@ namespace GoAustria.Controllers
                 return View();
         }
 
-        public ActionResult Link(int id)
+		public ActionResult Aszf()
+		{
+			return View();
+		}
+
+
+		public ActionResult Adatkezeles()
+		{
+			return View();
+		}
+
+		public ActionResult Order()
+		{
+			return View();
+		}
+
+		public ActionResult ComingSoon()
+		{
+			return View();
+		}
+
+		public ActionResult Linkgyujtemeny()
+		{
+			byte[] contents = System.IO.File.ReadAllBytes(Server.MapPath(Url.Content("~/Content/linkgyujtemeny.pdf")));
+			Response.AddHeader("Content-Disposition", "inline; filename=linkgyujtemeny.pdf");
+			return File(contents, "application/pdf");
+		}
+
+
+		public ActionResult Link(int id)
         {
             using (GoAustriaContext db = new GoAustriaContext())
             {

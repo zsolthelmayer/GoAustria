@@ -1,0 +1,15 @@
+﻿
+@{
+	ViewBag.Title = "Index";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="https://code.jquery.com/jquery-1.10.2.min.js"
+		integrity="sha256-C6CB9UYIS9UJeqinPHWTHVqh/E1uhG5Twh+Y5qFQmYg="
+		crossorigin="anonymous"></script>
+
+<div id="gendoc_aszf" style="width: 100%; overflow-y: auto;">Töltés...</div>
+<script type="text/javascript">jQuery.get("//aszf.fogyaszto-barat.hu/api.php?aszf=2928", function (ret) { jQuery("div#gendoc_aszf").html(ret); $.fancybox.update(); var sl = window.location.href.split("#"); if (jQuery("#" + sl[1]).size()) { jQuery("html, body").animate({ scrollTop: jQuery("#" + sl[1]).offset().top }, 1000); } });</script>
+
+<div id="gendoc_em" style="width: 100%; overflow-y: auto;"></div>
+<script type="text/javascript">jQuery.get("//aszf.fogyaszto-barat.hu/api.php?em=2928", function (ret) { jQuery("div#gendoc_em").html(ret); $.fancybox.update(); var sl = window.location.href.split("#"); if (jQuery("#" + sl[1]).size()) { jQuery("html, body").animate({ scrollTop: jQuery("#" + sl[1]).offset().top }, 1000); } });</script>

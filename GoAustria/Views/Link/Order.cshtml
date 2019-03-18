@@ -1,0 +1,676 @@
+﻿
+@{
+	ViewBag.Title = "Order";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+	var step = 0;
+	var paymentMethod;
+
+	function changeQty() {
+		var qty = $('#orderQty').val();
+
+		$('#price1').html((qty * 3990) + ' Ft');
+		$('#price2').html((qty * 3990) + ' Ft');
+
+		$('#resultQty').html(qty + '');
+		$('#resultPrice1').html((qty * 3990) + ' Ft');
+		$('#resultPrice2').html((qty * 3990) + ' Ft');
+
+	}
+
+	function prevStep() {
+
+		switch (step) {
+			case 1:
+				$('#first_step').css("display", "");
+				$('#second_step').css("display", "none");
+				$('#third_step').css("display", "none");
+				$('#fourth_step').css("display", "none");
+				$('#final_step').css("display", "none");
+				step--;
+				break;
+			case 2:
+				$('#first_step').css("display", "none");
+				$('#second_step').css("display", "");
+				$('#third_step').css("display", "none");
+				$('#fourth_step').css("display", "none");
+				$('#final_step').css("display", "none");
+				step--;
+				break;
+			case 3:
+				$('#first_step').css("display", "none");
+				$('#second_step').css("display", "none");
+				$('#third_step').css("display", "");
+				$('#fourth_step').css("display", "none");
+				$('#final_step').css("display", "none");
+				step--;
+				break;
+			case 4:
+				$('#first_step').css("display", "none");
+				$('#second_step').css("display", "none");
+				$('#third_step').css("display", "none");
+				$('#fourth_step').css("display", "");
+				$('#final_step').css("display", "none");
+				step--;
+				break;
+			default:
+			// code block
+		}
+	}
+
+
+	function validation() {
+
+		switch (step) {
+			case 0:
+
+				break;
+			case 1:
+				if ($('#orderSurname').val().trim().length === 0) {
+					$('#errorMsg').html('Személyes adatok: Vezetéknév kitöltése kötelező!');
+					$('#errorMsg').css('display', '');
+					return false;
+				}
+
+				if ($('#orderFirstname').val().trim().length === 0) {
+					$('#errorMsg').html('Személyes adatok: Keresztnév kitöltése kötelező!');
+					$('#errorMsg').css('display', '');
+					return false;
+				}
+
+				if ($('#orderEmail').val().trim().length === 0) {
+					$('#errorMsg').html('Személyes adatok: E-mail cím kitöltése kötelező!');
+					$('#errorMsg').css('display', '');
+					return false;
+				}
+
+				if ($('#orderPhone').val().trim().length === 0) {
+					$('#errorMsg').html('Személyes adatok: Telefonszám kitöltése kötelező!');
+					$('#errorMsg').css('display', '');
+					return false;
+				}
+
+				if ($('#orderSurname').val().trim().length === 0) {
+					$('#errorMsg').html('Személyes adatok: Vezetéknév kitöltése kötelező!');
+					$('#errorMsg').css('display', '');
+					return false;
+				}
+
+				if ($('#transName').val().trim().length === 0) {
+					$('#errorMsg').html('Szállítási adatok: Név kitöltése kötelező!');
+					$('#errorMsg').css('display', '');
+					return false;
+				}
+
+				if ($('#transCountry').val().trim().length === 0) {
+					$('#errorMsg').html('Szállítási adatok: Ország kitöltése kötelező!');
+					$('#errorMsg').css('display', '');
+					return false;
+				}
+
+				if ($('#transPostalCode').val().trim().length === 0) {
+					$('#errorMsg').html('Szállítási adatok: Irányítószám kitöltése kötelező!');
+					$('#errorMsg').css('display', '');
+					return false;
+				}
+
+				if ($('#transCity').val().trim().length === 0) {
+					$('#errorMsg').html('Szállítási adatok: Város kitöltése kötelező!');
+					$('#errorMsg').css('display', '');
+					return false;
+				}
+
+				if ($('#transAddress').val().trim().length === 0) {
+					$('#errorMsg').html('Szállítási adatok: Cím kitöltése kötelező!');
+					$('#errorMsg').css('display', '');
+					return false;
+				}
+
+				if ($('#transPhone').val().trim().length === 0) {
+					$('#errorMsg').html('Szállítási adatok: Telefonszám kitöltése kötelező!');
+					$('#errorMsg').css('display', '');
+					return false;
+				}
+
+				if ($('#invName').val().trim().length === 0) {
+					$('#errorMsg').html('Számlázási adatok: Név kitöltése kötelező!');
+					$('#errorMsg').css('display', '');
+					return false;
+				}
+
+				if ($('#invCountry').val().trim().length === 0) {
+					$('#errorMsg').html('Számlázási adatok: Ország kitöltése kötelező!');
+					$('#errorMsg').css('display', '');
+					return false;
+				}
+
+				if ($('#invPostalCode').val().trim().length === 0) {
+					$('#errorMsg').html('Számlázási adatok: Irányítószám kitöltése kötelező!');
+					$('#errorMsg').css('display', '');
+					return false;
+				}
+
+				if ($('#invCity').val().trim().length === 0) {
+					$('#errorMsg').html('Számlázási adatok: Város kitöltése kötelező!');
+					$('#errorMsg').css('display', '');
+					return false;
+				}
+
+				if ($('#invAddress').val().trim().length === 0) {
+					$('#errorMsg').html('Számlázási adatok: Cím kitöltése kötelező!');
+					$('#errorMsg').css('display', '');
+					return false;
+				}
+
+
+				break;
+			case 2:
+
+				if (paymentMethod !== 1 && paymentMethod !== 2) {
+					$('#errorMsg').html('Fizetési módot kötelező választani!');
+					$('#errorMsg').css('display', '');
+					return false;
+				}
+
+				if (!$('#adatkezeles').is(":checked")) {
+					$('#errorMsg').html('Kérlek fogadd el az Adatvédelmi tájékoztatót!');
+					$('#errorMsg').css('display', '');
+					return false;
+
+				}
+
+				if (!$('#aszf').is(":checked")) {
+					$('#errorMsg').html('Kérlek fogadd el az Általános szerződési feltételeket!');
+					$('#errorMsg').css('display', '');
+					return false;
+
+				}
+
+
+				break;
+			case 3:
+				break;
+			default:
+			// code block
+		}
+
+		$('#errorMsg').css('display', 'none');
+		return true;
+
+	}
+
+	function nextStep() {
+
+		if (!validation()) {
+			return;
+		}
+
+		switch (step) {
+			case 0:
+				$('#first_step').css("display", "none");
+				$('#second_step').css("display", "");
+				$('#third_step').css("display", "none");
+				$('#fourth_step').css("display", "none");
+				$('#final_step').css("display", "none");
+				step++;
+				break;
+			case 1:
+				$('#first_step').css("display", "none");
+				$('#second_step').css("display", "none");
+				$('#third_step').css("display", "");
+				$('#fourth_step').css("display", "none");
+				$('#final_step').css("display", "none");
+				step++;
+				break;
+			case 2:
+				$('#first_step').css("display", "none");
+				$('#second_step').css("display", "none");
+				$('#third_step').css("display", "none");
+				$('#fourth_step').css("display", "");
+				$('#final_step').css("display", "none");
+				finalStep();
+				step++;
+				break;
+			case 3:
+				$('#first_step').css("display", "none");
+				$('#second_step').css("display", "none");
+				$('#third_step').css("display", "none");
+				$('#fourth_step').css("display", "none");
+				$('#final_step').css("display", "");
+				step++;
+				saveOrder();
+			default:				
+		}
+	}
+
+
+	$(document).ready(function () {
+		$('#first_step').css("display", "");
+		$('#second_step').css("display", "none");
+		$('#third_step').css("display", "none");
+		$('#fourth_step').css("display", "none");
+	});
+
+	function finalStep() {
+
+		var qty = $('#orderQty').val();
+
+		if (paymentMethod == 1) {
+			$('#transPrice').html('990 Ft');
+			$('#resultPaymentMethod').html('Átutalással');
+			$('#sumPrice').html(((qty * 3990) + 990) + ' Ft');
+		} else {
+			$('#resultPaymentMethod').html('Utánvéttel');
+			$('#transPrice').html('1380 Ft');
+			$('#sumPrice').html(((qty * 3990) + 1380) + ' Ft');
+		}
+
+
+		$("#resultInvName").html($('#invName').val());
+		$("#resultInvPhone").html($('#invPhone').val());
+		$("#resultInvCity").html($('#invCity').val());
+		$("#resultInvCountry").html($('#invCountry').val());
+		$("#resultInvAddress").html($('#invAddress').val());
+		$("#resultInvTaxNum").html($('#invTaxNum').val());
+
+
+	}
+
+
+	function transferOnClick() {
+		paymentMethod = 1;
+		console.log(paymentMethod);
+	}
+
+	function cashOnDeliveryOnClick() {
+		paymentMethod = 2;
+		console.log(paymentMethod);
+	}
+
+	function commentOnChange() {
+		$("#resultComment").html($('#comment').val());
+	}
+
+	function onChangeSurname() {
+		$("#resultSurname").html($('#orderSurname').val());
+	}
+
+	function onChangeFirstname() {
+		$("#resultFirstname").html($('#orderFirstname').val());
+	}
+
+	function onChangeEmail() {
+		$("#resultEmail").html('Email-cím: ' + $('#orderEmail').val());
+	}
+
+	function onChangePhone() {
+		$("#resultPhone").html('Telefonszám: ' + $('#orderPhone').val());
+	}
+
+
+	function onChangeTransName() {
+		$("#resultTransName").html($('#transName').val());
+	}
+
+	function onChangeTransCountry() {
+		$("#resultTransCountry").html($('#transCountry').val());
+	}
+
+	function onChangeTransPostalCode() {
+		$("#resultTransPostalCode").html($('#transPostalCode').val());
+	}
+
+	function onChangeTransAddress() {
+		$("#resultTransAddress").html($('#transAddress').val());
+	}
+
+	function onChangeTransCity() {
+		$("#resultTransCity").html($('#transCity').val());
+	}
+
+	function onChangeTransPhone() {
+		$("#resultTransPhone").html($('#transPhone').val());
+	}
+
+
+	function sameTransDataClick() {
+
+		$('#invName').val($('#transName').val());
+		$('#invCountry').val($('#transCountry').val());
+		$('#invPostalCode').val($('#transPostalCode').val());
+		$('#invCity').val($('#transCity').val());
+		$('#invAddress').val($('#transAddress').val());
+
+
+	}
+
+	function saveOrder() {
+
+		var newOrder = {
+			Id: 'null',
+			Qty: $('#orderQty').val(),
+			Price: $('#price1').html(),
+			OrdFirstname: $('#orderFirstname').val(),
+			OrdSurname: $('#orderSurname').val(),
+			OrdEmail: $('#orderEmail').val(),
+			OrdPhone: $('#orderPhone').val(),
+			TransName: $('#transName').val(),
+			TransCountry: $('#transCountry').val(),
+			TransPostalCode: $('#transPostalCode').val(),
+			TransCity: $('#transCity').val(),
+			TransAddress: $('#transAddress').val(),
+			TransPhone: $('#transPhone').val(),
+			InvName: $('#invName').val(),
+			InvCountry: $('#invCountry').val(),
+			InvPostalCode: $('#invPostalCode').val(),
+			InvCity: $('#invCity').val(),
+			InvAddress: $('#invAddress').val(),
+			InvPhone: $('#invPhone').val(),
+			InvTaxNum: $('#invTaxNum').val(),
+			PaymentMehod: paymentMethod,
+			PostalFee: paymentMethod == 1 ? 990 : 1380,
+			Comment: $('#comment').val()
+
+		};
+
+		$.ajax({
+			url: 'api/orders/',
+			type: 'POST',
+			data: newOrder,
+			success: function (result) {
+				$('#final_step').css('display', '');
+				$('#prevBtn').css('display', 'none');
+				$('#nextBtn').css('display', 'none');
+			},
+			error: function (request, status, error) {
+				$('#final_step').css('display', 'none');
+				$('#errorMsg').html('Sikertelen rendelés!');
+				$('#errorMsg').css('display', '');
+				$('#prevBtn').css('display', 'none');
+				$('#nextBtn').css('display', 'none');
+
+			}
+		});
+	}
+
+
+</script>
+
+
+<div class="row"><h2 style="margin: auto;">Megrendelői felület</h2></div>
+<br />
+
+<div class="alert alert-danger" role="alert" id="errorMsg" style="display:none;">
+	This is a danger alert—check it out!
+</div>
+
+<div id="first_step" style="display: none;">
+	<table class="table col-sm-12">
+		<thead>
+			<tr>
+				<th scope="col">Termék neve</th>
+				<th scope="col">Mennyiség</th>
+				<th scope="col">Fogyasztói ár</th>
+				<th scope="col">Összesen</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Munkavállalás Ausztriában lépésről lépésre könyv</td>
+				<td>
+					<input class="form-control" style="width: 70px;" type="number" value="1" id="orderQty" onclick="changeQty();" onchange="changeQty();" min="1">
+				</td>
+				<td id="price1">3990 Ft</td>
+				<td id="price2">3990 Ft</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<div id="second_step" style="display: none;">
+
+	<h4>Személyes adatok</h4>
+
+	<div class="row">
+		<div class="col-sm-4 form-group">
+			<label for="orderSurname">Vezetéknév</label>
+			<input type="text" onchange="onChangeSurname();" class="form-control" id="orderSurname" placeholder="Vezetéknév">
+		</div>
+
+		<div class="col-sm-4 form-group">
+			<label for="orderFirstname">Keresztnév</label>
+			<input onchange="onChangeFirstname();" type="text" class="form-control" id="orderFirstname" placeholder="Keresztnév">
+		</div>
+
+		<div class="col-sm-4 form-group">
+			<label for="orderEmail">Email-cím</label>
+			<input onchange="onChangeEmail();" type="email" class="form-control" id="orderEmail" placeholder="Email-cím">
+		</div>
+
+		<div class="col-sm-4 form-group">
+			<label for="orderPhone">Telefonszám</label>
+			<input type="tel" onchange="onChangePhone();" class="form-control" id="orderPhone" placeholder="Telefonszám">
+		</div>
+	</div>
+	<br />
+
+	<h4>Szállítási adatok</h4>
+	<div class="row">
+
+		<div class="col-sm-4 form-group">
+			<label for="transName">Név</label>
+			<input type="text" class="form-control" onchange="onChangeTransName();" id="transName" placeholder="Név">
+		</div>
+
+		<div class="col-sm-4 form-group">
+			<label for="transCountry">Ország</label>
+			<input type="text" class="form-control" id="transCountry" onchange="onChangeTransCountry();" placeholder="Ország" value="Magyarország">
+		</div>
+
+		<div class="col-sm-4 form-group">
+			<label for="transPostalCode">Irányítószám</label>
+			<input type="text" class="form-control" id="transPostalCode" onchange="onChangeTransPostalCode();" placeholder="Irányítószám">
+		</div>
+
+		<div class="col-sm-4 form-group">
+			<label for="transCity">Város</label>
+			<input type="text" class="form-control" id="transCity" onchange="onChangeTransCity();" placeholder="Város">
+		</div>
+
+		<div class="col-sm-4 form-group">
+			<label for="transAddress">Utca, Házszám</label>
+			<input type="text" class="form-control" id="transAddress" onchange="onChangeTransAddress();" placeholder="Utca, Házszám">
+		</div>
+
+		<div class="col-sm-4 form-group">
+			<label for="transPhone">Telefonszám (szállításhoz)</label>
+			<input type="text" class="form-control" id="transPhone" onchange="onChangeTransPhone();" placeholder="Telefonszám (szállításhoz)">
+		</div>
+
+		<span class="col-sm-12">
+			Amennyibe külföldre szeretnéd kérni a csomagodat, kérlek vedd fel velem a kapcsolatot az info@ausztriamunka.hu email címen.
+		</span>
+	</div>
+	<br />
+
+	<h4>Számlázási adatok</h4>
+	<div class="row">
+		<div class="col-sm-4">
+			Megegyezik a szállítái adatokkal
+		</div>
+
+		<div class="col-sm-4">
+			<div class="form-check">
+				<input type="checkbox" class="form-check-input" id="sameTransData" onclick="sameTransDataClick();">
+			</div>
+		</div>
+	</div>
+	<br />
+
+	<div class="row">
+		<div class="col-sm-4 form-group">
+			<label for="invName">Név</label>
+			<input type="text" class="form-control" id="invName" onchange="onChangeInvName();" placeholder="Név">
+		</div>
+
+		<div class="col-sm-4 form-group">
+			<label for="invCountry">Ország</label>
+			<input type="text" class="form-control" id="invCountry" onchange="onChangeInvCountry();" placeholder="Ország">
+		</div>
+
+		<div class="col-sm-4 form-group">
+			<label for="invPostalCode">Irányítószám</label>
+			<input type="text" class="form-control" id="invPostalCode" onchange="onChangeInvPostalCode();" placeholder="Irányítószám">
+		</div>
+
+		<div class="col-sm-4 form-group">
+			<label for="invCity">Város</label>
+			<input type="text" class="form-control" id="invCity" placeholder="Város" onchange="onChangeInvCity();">
+		</div>
+
+		<div class="col-sm-4 form-group">
+			<label for="invAddress">Utca, Házszám</label>
+			<input type="text" class="form-control" id="invAddress" placeholder="Utca, Házszám" onchange="onChangeInvAddress();">
+		</div>
+
+		<div class="col-sm-4 form-group">
+			<label for="invTaxNum">Cég esetén adószám</label>
+			<input type="text" class="form-control" id="invTaxNum" placeholder="Cég esetén adószám" onchange="onChangeInvTaxNum();">
+		</div>
+
+	</div>
+
+</div>
+
+<div id="third_step" style="display: none;">
+	<br />
+	<div class="row col-sm-12">
+		<div class="col-sm-2"><span>Fizetési mód: </span></div>
+
+		<div class="col-sm-4 form-check-inline">
+			<label class="form-check-label">
+				<input type="radio" class="form-check-input" onclick="transferOnClick();" name="optradio" id="transfer">Átutalás (Postaköltség: 990 Ft)
+			</label>
+		</div>
+		<div class="col-sm-4 form-check-inline">
+			<label class="form-check-label">
+				<input type="radio" class="form-check-input" onclick="cashOnDeliveryOnClick();" name="optradio" id="cashOnDelivery">Utánvétel (Postaköltség: 1380 Ft)
+			</label>
+		</div>
+	</div>
+
+	<br />
+	<div class="row col-sm-12">
+		<div class="col-sm-12 form-group">
+			<label for="comment">Megjegyzés:</label>
+			<textarea class="col-sm-12" onchange="commentOnChange();" class="form-control" rows="4" id="comment"></textarea>
+		</div>
+	</div>
+	<br />
+	<div class="row col-sm-12 pull-right">
+		<div class="col-sm-12 form-check">
+			<label class="form-check-label">
+				<input id="adatkezeles" type="checkbox" class="form-check-input" value="">Elolvastam és elfogadom az <a href="~/Adatkezeles" target="_blank">adatvédelmi tájékoztatóban</a> leírtakat.
+			</label>
+		</div>
+	</div>
+
+	<div class="row col-sm-12 pull-right">
+		<div class="col-sm-12 form-check">
+			<label class="form-check-label">
+				<input id="aszf" type="checkbox" class="form-check-input" value="">Az <a href="~/Aszf" target="_blank">Általános szerződési feltételeket</a> elolvastam és elfogadom.
+			</label>
+		</div>
+	</div>
+
+</div>
+
+<div id="fourth_step" style="display: none;">
+	<h5>Ellenőrzés</h5>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th scope="col">Termék neve</th>
+				<th scope="col">Mennyiség</th>
+				<th scope="col">Fogyasztói ár</th>
+				<th scope="col">Összesen</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Munkavállalás Ausztriában lépésről lépésre könyv</td>
+				<td id="resultQty"></td>
+				<td id="resultPrice1">3990 Ft</td>
+				<td id="resultPrice2">3990 Ft</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td>Szállítási költség</td>
+				<td id="transPrice">0 Ft</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td>Végösszeg</td>
+				<td id="sumPrice">0 Ft</td>
+			</tr>
+
+		</tbody>
+	</table>
+
+	<h5>Fizetési mód</h5>
+	<div id="resultPaymentMethod"></div>
+	<h5>Személyes adatok</h5>
+	<div class="row">
+		<div id="resultSurname" class="col-sm-1"></div>
+		<div id="resultFirstname" class="col-sm-1"></div>
+	</div>
+	<div id="resultEmail"></div>
+	<div id="resultPhone"></div>
+	<h5>Szállítási adatok</h5>
+	<div id="resultTransName"></div>
+	<div id="resultTransPostalCode"></div>
+	<div id="resultTransCity"></div>
+	<div id="resultTransAddress"></div>
+	<div id="resultTransCountry"></div>
+	<div id="resultTransPhone"></div>
+	<h5>Számlázási adatok</h5>
+	<div id="resultInvName"></div>
+	<div id="resultInvPostalCode"></div>
+	<div id="resultInvCity"></div>
+	<div id="resultInvAddress"></div>
+	<div id="resultInvCountry"></div>
+	<div id="resultInvPhone"></div>
+
+	<div id="resultComment"></div>
+</div>
+<br />
+
+<div id="final_step" style="display: none; text-align:center;">
+	<p>
+		Köszönjük, sikeresen elküldted a megrendelésedet.
+	</p>
+	<p>
+		Rendelésedről és a szállításról emailben küldjük neked az információkat.
+	</p>
+	<p>
+		Amennyiben az email nem érkezik meg egy órán belül, kérlek jelezd azt az info@ausztriamunka.hu email címen.
+	</p>
+</div>
+
+<div class="col-sm-12 pull-right text-right">
+	<button id="prevBtn" type="button" class="col-sm-3 btn btn-default" style="margin: 5px;" onclick="prevStep();">Vissza</button>
+	<button id="nextBtn" type="button" class="col-sm-3 btn btn-danger" style="margin: 5px;" onclick="nextStep();">Tovább</button>
+</div>
+
+<br />
+
+
+
+
