@@ -795,9 +795,8 @@ minor-bidi'>A mai napon ($DATE$) a következő rendelést adtad le internetes
   11600006-00000000-83591781 <o:p></o:p></span></p>
   <p class=MsoNormal><b><span style = 'font-size:12.0pt;line-height:115%;
   font-family:""Helvetica"",sans-serif;mso-bidi-font-family:""Times New Roman"";
-  mso-bidi-theme-font:minor-bidi'>Ezt írd a közleménybe: Szent Péter,
-  2019021635404 (ez a rendelés száma legyen, ha lehet, írja ide automatikusan a
-  névvel együtt)</span></b><b><span style = 'font-family:""Helvetica"",sans-serif;
+  mso-bidi-theme-font:minor-bidi'>Ezt írd a közleménybe: $NAME$,
+  $ORDER_NUMBER$ </span></b><b><span style = 'font-family:""Helvetica"",sans-serif;
   mso-bidi-font-family:""Times New Roman"";mso-bidi-theme-font:minor-bidi'><o:p></o:p></span></b></p>
   </td>
  </tr>

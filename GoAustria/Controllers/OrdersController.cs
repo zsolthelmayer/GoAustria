@@ -30,7 +30,7 @@ namespace GoAustria.Controllers
 
 			DateTime now = DateTime.Now;
 
-			String mailBody = value.PaymentMethod == 0 ? Constants.TRANSFER_MAIL : Constants.CASH_ON_DELIVERY_MAIL;
+			String mailBody = value.PaymentMethod == 1 ? Constants.TRANSFER_MAIL : Constants.CASH_ON_DELIVERY_MAIL;
 
 			mailBody = mailBody
 				.Replace("$NAME$", value.OrdSurname + " " + value.OrdFirstname)

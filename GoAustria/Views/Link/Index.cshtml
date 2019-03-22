@@ -587,7 +587,7 @@
 					<div class="row col-sm-12 pull-right">
 						<div class="col-sm-12 form-check">
 							<label class="form-check-label">
-								<input id="adatkezeles" type="checkbox" class="form-check-input" value="">Elolvastam és elfogadom az <a href="~/Adatkezeles" target="_blank">adatvédelmi tájékoztatóban</a> leírtakat.
+								<input id="adatkezeles" type="checkbox" class="form-check-input" value="">Elolvastam és elfogadom az <a href="~/Adatkezeles" target="_blank"><u>adatvédelmi tájékoztató</u>ban</a> leírtakat.
 							</label>
 						</div>
 					</div>
@@ -595,7 +595,7 @@
 					<div class="row col-sm-12 pull-right">
 						<div class="col-sm-12 form-check">
 							<label class="form-check-label">
-								<input id="aszf" type="checkbox" class="form-check-input" value="">Az <a href="~/Aszf" target="_blank">Általános szerződési feltételeket</a> elolvastam és elfogadom.
+								<input id="aszf" type="checkbox" class="form-check-input" value="">Az <a href="~/Aszf" target="_blank"><u>Általános szerződési feltétel</u>eket</a> elolvastam és elfogadom.
 							</label>
 						</div>
 					</div>
@@ -1067,6 +1067,7 @@
 
 		function saveOrder() {
 
+			console.log(paymentMethod);
 			var newOrder = {
 				Id: 'null',
 				Qty: $('#orderQty').val(),
@@ -1088,7 +1089,7 @@
 				InvAddress: $('#invAddress').val(),
 				InvPhone: $('#invPhone').val(),
 				InvTaxNum: $('#invTaxNum').val(),
-				PaymentMehod: paymentMethod,
+				PaymentMethod: paymentMethod,
 				PostalFee: paymentMethod == 1 ? 990 : 1380,
 				Comment: $('#comment').val()
 
