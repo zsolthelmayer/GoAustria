@@ -13,12 +13,26 @@ namespace GoAustria
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            routes.MapRoute(
+			routes.MapRoute(
+				name: "Adatkezeles",
+				url: "adatkezeles/{id}",
+				defaults: new { controller = "Adatkezeles", action = "Index" }
+			);
+
+
+			routes.MapRoute(
+				name: "Aszf",
+				url: "aszf/{id}",
+				defaults: new { controller = "Aszf", action = "Index" }
+			);
+
+
+			routes.MapRoute(
                 name: "Default",
                 url: "{action}/{id}",
                 defaults: new { controller = "Link", action = "Index", id = UrlParameter.Optional }
             );
-        }
+		}
     }
 }
 
