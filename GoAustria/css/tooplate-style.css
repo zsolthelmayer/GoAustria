@@ -740,6 +740,28 @@ http://www.tooplate.com/view/2106-soft-landing
 	margin-right: auto;
 	display: block;
   }
+
+	.bookBtn {
+		background-color: #E04343;
+		border: 0;
+		color: white;
+		border-radius: 25px;
+		width: 40%;
+		margin-left: auto;
+		margin-right: auto;
+		display: block;
+	}
+
+	.order-book {
+		background-color: #E04343;
+		border: 0;
+		color: white;
+		border-radius: 25px;
+		width: auto;
+		margin-left: auto;
+		margin-right: auto;
+		display: block;
+	}
   
   @media only screen and (max-width: 1200px) {
 
@@ -871,4 +893,13 @@ http://www.tooplate.com/view/2106-soft-landing
     .testimonial-info {
       height: 65vh;
     }
+
+	.bookBtn {
+		width: auto;
+	}
+
+	.order-book {
+		width: auto;
+	}
+
   }
