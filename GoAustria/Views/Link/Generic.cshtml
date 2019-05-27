@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "Generic";
 }
-<div class="container-">
+<div class="container">
     <h2>Generic</h2>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     @using (var ctx = new ApplicationDbContext())
@@ -19,7 +19,7 @@
             Author | @blog.Author
         </h6>
         <div class="container">
-            @blog.Content;
+            @Html.Raw(@blog.Content);
 
         </div>
     }
