@@ -1,0 +1,26 @@
+﻿
+@using GoAustria.Models
+@{
+    ViewBag.Title = "Generic";
+}
+<div class="container-">
+    <h2>Generic</h2>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    @using (var ctx = new ApplicationDbContext())
+    {
+        var blog = ctx.Blogs.Find(Convert.ToInt32(Url.RequestContext.RouteData.Values["Id"]));
+
+
+        <h1 class="text-center">
+            @blog.Title
+        </h1>
+
+        <h6 class="text-center" style="padding-bottom:10px;">
+            Author | @blog.Author
+        </h6>
+        <div class="container">
+            @blog.Content;
+
+        </div>
+    }
+</div>

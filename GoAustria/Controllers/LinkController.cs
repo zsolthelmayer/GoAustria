@@ -52,7 +52,39 @@ namespace GoAustria.Controllers
 			return View();
 		}
 
-		public ActionResult Linkgyujtemeny()
+     
+
+        public ActionResult Blog()
+        {
+            return View();
+        }
+        public ActionResult Generic()
+        {
+            return View();
+        }
+
+        public ActionResult Create()
+        {
+            return View();
+        }
+        [ValidateInput(false)]
+        [HttpPost]
+        public ActionResult Create(Blog b)
+        {
+            if (ModelState.IsValid)
+            {
+                Console.WriteLine(b.Author);
+                using (var ctx = new ApplicationDbContext())
+                {
+                    ctx.Blogs.Add(b);
+                    ctx.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+            }
+            return View();
+        }
+
+        public ActionResult Linkgyujtemeny()
 		{
 			byte[] contents = System.IO.File.ReadAllBytes(Server.MapPath(Url.Content("~/Content/linkgyujtemeny.pdf")));
 			Response.AddHeader("Content-Disposition", "inline; filename=linkgyujtemeny.pdf");

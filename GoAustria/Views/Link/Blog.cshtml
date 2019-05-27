@@ -1,0 +1,23 @@
+﻿
+@using GoAustria.Models
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>View</h2>
+@using (var ctx = new ApplicationDbContext())
+{
+    foreach (var blog in ctx.Blogs)
+    {
+        <div class="panel panel-body">
+            <h3>@blog.Title</h3>
+            Készítette: @blog.Author
+             
+            <a href="Generic/@blog.Id">
+                Read More....
+            </a>
+        </div>
+    }
+}
+
+

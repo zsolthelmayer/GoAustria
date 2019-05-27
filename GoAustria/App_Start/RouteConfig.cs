@@ -32,7 +32,13 @@ namespace GoAustria
                 url: "{action}/{id}",
                 defaults: new { controller = "Link", action = "Index", id = UrlParameter.Optional }
             );
-		}
+
+            routes.MapRoute(
+                name: "Blog",
+                url: "blog/{id}",
+                defaults: new { controller = "Blog", action = "Index" }
+            );
+        }
     }
 }
 
