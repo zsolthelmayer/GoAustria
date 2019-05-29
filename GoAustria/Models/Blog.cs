@@ -4,7 +4,6 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
-using System.Web.Mvc;
 
 namespace GoAustria.Models
 {
@@ -12,16 +11,17 @@ namespace GoAustria.Models
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Required]
-        public int Id { get; set; }
+        public int Id { set; get; }
 
         [Required, StringLength(50)]
-        public string Title { get; set; }
+        public string Author { set; get; }
 
         [Required, StringLength(50)]
-        public string Author { get; set; }
+        public string Title { set; get; }
 
         [Required]
-        public string Content { get; set; }
-
+        public string Content { set; get; }
+       
+        public bool Active { set; get; }
     }
 }
