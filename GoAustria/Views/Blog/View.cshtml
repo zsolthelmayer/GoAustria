@@ -3,22 +3,26 @@
 @{
     ViewBag.Title = "Index";
 }
-<div class="container-fluid">
-    <h2>View</h2>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<div class="container">
+    <h2>Nézett</h2>
+    
     @using (var ctx = new ApplicationDbContext())
     {
         foreach (var blog in ctx.Blogs)
         {
-            <div class="panel panel-body container-fluid">
-                <h3>@blog.Title</h3>
-                Készítette: @blog.Author
+            
+    <div class="panel panel-body container-fluid">
+        <h3>@blog.Title</h3>
+        <p>almafa</p>@blog.Active
+        Készítette: @blog.Author
 
-                <a href="@Url.Action("Generic", new { @id=blog.Id})">
-                    Tovább a cíkkhez.
-                </a>
-            </div>
-        }
+        <a href="@Url.Action( "Generic", new { @id=blog.Id})">
+            Tovább a cíkkhez.
+        </a>
+    </div>
+            }
+        
     }
 </div>
 
