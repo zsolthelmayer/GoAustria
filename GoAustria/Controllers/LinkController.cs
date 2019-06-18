@@ -73,9 +73,10 @@ namespace GoAustria.Controllers
         {
             if (ModelState.IsValid)
             {
-                Console.WriteLine(b.Author);
                 using (var ctx = new ApplicationDbContext())
                 {
+                 
+                
                     ctx.Blogs.Add(b);
                     ctx.SaveChanges();
                     return RedirectToAction("Index");
