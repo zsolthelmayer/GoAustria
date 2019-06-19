@@ -58,6 +58,11 @@ namespace GoAustria.Controllers
         {
             return View();
         }
+        public ActionResult BlogAdmin()
+        {
+            return View();
+        }
+
         public ActionResult Generic()
         {
             return View();

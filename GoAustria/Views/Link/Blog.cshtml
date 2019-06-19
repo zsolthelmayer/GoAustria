@@ -32,14 +32,6 @@
 
 </head>
 
-<!-- SCRIPTS -->
-<script src="js/jquery.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery.stellar.min.js"></script>
-<script src="js/owl.carousel.min.js"></script>
-<script src="js/smoothscroll.js"></script>
-<script src="js/custom.js"></script>
-<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
 
 <!-- MENU -->
 <section class="navbar custom-navbar navbar-fixed-top" role="navigation">
@@ -70,6 +62,17 @@
 
     </div>
 </section>
+
+<!-- SCRIPTS -->
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.stellar.min.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/smoothscroll.js"></script>
+<script src="js/custom.js"></script>
+<script src="~/Scripts/ckeditor/ckeditor.js"></script>
+<script src="~/Scripts/ckfinder/ckfinder.js"></script>
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
 
 <section id="home" data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
@@ -106,22 +109,26 @@
             <br>
 
             @Html.Raw(@blog.Content)
+            <input id="asd" type="text" value="@blog.Content" />
 
             <!--This is the textarea we will be replacing with a CKEditor instance-->
-            <textarea name="editor1"></textarea>
+            <textarea id="Content" class="ckeditor"></textarea>
 
-            <!--This button, when clicked, displays an alert with the editor's current data-->
-            <input type="button" value="Click for Data" onclick="alert(CKEDITOR.instances.editor1.getData());" />
+         
 
 
             <script type="text/javascript">
-        $(document).ready(function () {
-            // instance, using default configuration.
-            CKEDITOR.replace('editor1');
-            //set data
-            CKEDITOR.instances['editor1'].setData(@blog.Content);
 
-        });
+
+                $(document).ready(function () {
+                    var x = document.getElementById("asd").value;
+                    x.replace('\"\"', '\'\'');
+                    $(function () {
+                        $("#Content").html(x);
+                    });
+
+
+                });
 
             </script>
 
@@ -139,5 +146,12 @@
 }
 
 
-
+<!-- SCRIPTS -->
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.stellar.min.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/smoothscroll.js"></script>
+<script src="js/custom.js"></script>
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
 

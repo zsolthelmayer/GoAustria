@@ -1292,6 +1292,7 @@
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Context\GoAustriaContext.cs" />
+    <Compile Include="Controllers\BlogAdminController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\LinkController.cs" />
     <Compile Include="Controllers\LinksController.cs" />
@@ -1352,6 +1353,7 @@
     <Content Include="Views\Link\Blog.cshtml" />
     <Content Include="Views\Link\Generic.cshtml" />
     <Content Include="Views\Link\Create.cshtml" />
+    <Content Include="Views\Link\BlogAdmin.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1361,6 +1363,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\BlogAdmin\" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
