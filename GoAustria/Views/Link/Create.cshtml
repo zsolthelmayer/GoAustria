@@ -13,9 +13,17 @@
         @Html.AntiForgeryToken()
 
 
-
+        <!-- SCRIPTS -->
+        <script src="js/jquery.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/jquery.stellar.min.js"></script>
+        <script src="js/owl.carousel.min.js"></script>
+        <script src="js/smoothscroll.js"></script>
+        <script src="js/custom.js"></script>
         <script src="~/Scripts/ckeditor/ckeditor.js"></script>
         <script src="~/Scripts/ckfinder/ckfinder.js"></script>
+        <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
+
 
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <div class="container">
@@ -50,7 +58,7 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.Content, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.TextAreaFor(model => model.Content, new { @Value = "asdsad", @class = "ckeditor" })
+                        @Html.TextAreaFor(model => model.Content, new {  @class = "ckeditor" })
                         @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -77,13 +85,9 @@
     <script src="js/smoothscroll.js"></script>
     <script src="js/custom.js"></script>
     <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
-    <script type="text/javascript">
-        $(function () {
-            $("#Content").html("<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vitae bibendum lacus. Vestibulum vel placerat nisi, in vulputate felis. Aenean porttitor neque vitae magna accumsan tempor. Sed consequat nunc ex, quis lacinia metus ultrices non. Nullam laoreet pellentesque urna, quis dapibus augue eleifend sed. Donec et erat interdum, pulvinar ligula vitae, hendrerit magna. Morbi consectetur commodo semper.</p><p>Integer vehicula, elit non malesuada scelerisque, nulla nibh volutpat ligula, id porta magna arcu id lectus. Donec ac justo quis erat egestas vulputate vitae et quam. Maecenas ultrices nisl neque, at ultricies quam sollicitudin id. Aenean laoreet, massa vitae aliquet suscipit, dolor sem tincidunt leo, non sagittis tortor tellus et massa. Sed aliquet magna quam, non gravida ipsum vulputate eu. Morbi laoreet nisi nibh, sit amet malesuada lorem dignissim venenatis. Cras ultrices elementum arcu, a ullamcorper velit ornare ac. Duis pretium, lectus vel varius consectetur, sem elit suscipit velit, vitae accumsan orci quam et elit. Sed viverra nisl nulla, quis feugiat risus sodales et. Suspendisse potenti. Nam ut nisl est. Donec aliquam nibh ac efficitur ultrices. Quisque id justo vel nibh lobortis placerat at et enim. Aenean sed consequat turpis. Aliquam a arcu sapien.</p><p style='text-align:center'>Suspendisse laoreet mi ut dolor luctus placerat. Nunc et pulvinar ante. Maecenas id lectus a sapien laoreet porttitor. Aenean blandit fringilla nulla, non eleifend magna euismod pulvinar. Morbi ut lacus quis augue dapibus hendrerit. Aliquam nec consequat diam. Donec at magna quis ex sodales vestibulum fermentum sed diam. Vestibulum aliquam scelerisque velit a vestibulum. Donec pellentesque a ligula vitae pharetra.<img alt='' src='http://www.mindmegette.hu/images/14/O/22569_aranylo-husleves_n-201510170519.jpg' style='float:right; height:250px; width:250px' /></p><p>Praesent vel gravida libero. Mauris metus metus, iaculis in enim vel, tincidunt consequat lorem. Phasellus vestibulum ipsum sit amet fermentum porttitor. Mauris tellus leo, ornare rhoncus quam vel, sagittis vulputate felis. Donec tortor elit, ullamcorper quis tellus sed, egestas ullamcorper dui. Curabitur eget hendrerit dui. Fusce sem nulla, varius at elit a, pellentesque luctus augue. Proin et sem at ante rutrum interdum id in metus.</p><p>Integer nulla nulla, mollis sed sem sit amet, lacinia commodo mi. Maecenas luctus eleifend iaculis. Nam dignissim, velit nec pellentesque eleifend, mauris eros mollis mauris, eu rhoncus dui mi at ipsum. Integer non elit sagittis eros imperdiet ultricies. Proin sit amet lorem arcu. Pellentesque laoreet varius tristique. Integer placerat posuere laoreet.</p>");
-        });
-    </script>
 
-    
+
+
 
 
 

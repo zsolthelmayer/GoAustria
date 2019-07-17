@@ -13,6 +13,7 @@
 <script src="~/Scripts/ckeditor/ckeditor.js"></script>
 <script src="~/Scripts/ckfinder/ckfinder.js"></script>
 <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
+
 <div class="container">
     <div class="row">
         <h2>BlogAdmin</h2>
@@ -21,7 +22,7 @@
 </div>
 
 
-<button href="~/Create" class="btn btn-primary" style="margin-bottom: 10px;" id="addNewBtn"><b><i class="fa fa-plus"></i></b> Új Blog</button>
+<a href="~/Create"><i class="fa fa-plus"></i></b> Új Blog</a>
 <table id="blogTable" class="table table-striped table-bordered">
     <thead>
         <tr>
@@ -31,54 +32,6 @@
         </tr>
     </thead>
 </table>
-
-<!-- Edit Modal -->
-<div class="modal fade" id="editBlogModal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content" style="width: 100%;">
-            <div class="modal-header">
-                <div class="container">
-                    <div class="row">
-                        <span><b>Edit Blog</b></span>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        <input type="hidden" id="id" />
-                    </div>
-                </div>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="form-group">
-                        <label for="editTitle">Title</label>
-                        <input type="text" class="form-control" id="editTitle" placeholder="Title">
-                    </div>
-                    <div class="form-group">
-                        <label for="editAuthor">Author</label>
-                        <input type="text" class="form-control" id="editAuthor" placeholder="Title">
-                    </div>
-                    <div class="form-group">
-                        <label for="editActive">Active</label>
-                        <input type="text" class="form-control" id="editActive" placeholder="Title">
-                    </div>
-                    <div class="form-group">
-                        <label for="editContent">Content</label>
-                        <input type="text" class="form-control" id="editContent" placeholder="Title">
-                    </div>
-                    <div class="form-group">
-                        <label for="Content">Content</label>
-                        <textarea id="Content" class="ckeditor"></textarea>
-                    </div>
-                    <div class="form-group text-right">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary" id="editBlog">Save</button>
-                        <button type="button" class="btn btn-primary" id="add">add</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
 
 
 
@@ -106,7 +59,7 @@
                 "columns": [
                     { "data": "Id", "visible": false },
                     { "data": "Title" },
-                    { "defaultContent": "<button id='remove' class='btn btn-primary'><i class='fa fa-trash'></i></button> <button id='edit' class='btn btn-primary'><i class='fa fa-pencil'></i></button>" }
+                    { "defaultContent": "<button id='remove' class='btn btn-primary'><i class='fa fa-trash'></i></button> <button id='edit'  class='btn btn-primary'><i class='fa fa-pencil'></i></button>" }
                 ]
             });
 
@@ -137,7 +90,7 @@
                 });
             });
 
-            
+
 
             $('#blogTable tbody').on('click', 'button', function () {
 
@@ -145,21 +98,7 @@
                 console.log(data.Id);
 
                 if (this.id == "edit") {
-                    $('#id').val(data.Id);
-                    $('#editTitle').val(data.Title);
-                    $('#editAuthor').val(data.Author);
-                    $('#editActive').val(data.Active);
-
-                    var x = data.Content
-                    console.log(x);
-                    x.replace('\"\"', '\'\'');
-                    $('#editContent').val(x);
-
-                    $('#editBlogModal').modal('show');
-                    $(function () {
-                        console.log(x);
-                        $("textarea#Content").val(x);
-                    });
+                    location.href = '/BlogEdit/' + data.Id;
                 } else if (this.id == "remove") {
                     $.ajax({
                         url: 'api/blogadmin/' + data.Id,
@@ -185,7 +124,7 @@
             console.log(x);
             x.replace('\"\"', '\'\'');
             console.log('before');
-          
+
             console.log(x);
             $("Content").html(x);
 

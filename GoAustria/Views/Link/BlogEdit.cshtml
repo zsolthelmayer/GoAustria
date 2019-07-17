@@ -1,11 +1,20 @@
 ﻿
 @using GoAustria.Models
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "BlogEdit";
 }
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- SCRIPTS -->
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.stellar.min.js"></script>
+    <script src="../js/owl.carousel.min.js"></script>
+    <script src="../js/smoothscroll.js"></script>
+    <script src="../js/custom.js"></script>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
+
 
     <title>Munkavállalás Ausztriában lépésről lépésre</title>
     <!--
@@ -100,44 +109,117 @@
 @using (var ctx = new ApplicationDbContext())
 {
     var blog = ctx.Blogs.Find(Convert.ToInt32(Url.RequestContext.RouteData.Values["id"]));
-        <div class="panel panel-body container">
-            <h3 class="text-center">@blog.Title</h3>
-            Készítette: @blog.Author
-            <br>
-            <input style="visibility: collapse;" id="asd" type="text" value="@blog.Content" />
 
-            <!--This is the textarea we will be replacing with a CKEditor instance-->
-            <textarea id="Content" class="ckeditor"></textarea>
-
-            <script type="text/javascript">
+    <script>
 
 
-                $(document).ready(function () {
-                    var x = document.getElementById("asd").value;
-                    x.replace('\"\"', '\'\'');
-                    $(function () {
-                        $("#Content").html(x);
+    </script>
+
+    <div class="panel panel-body container">
+
+        <form>
+           
+            <div class="form-group">
+                <label for="editTitle">Title</label>
+                <input type="text" value="@blog.Title" class="form-control" id="editTitle" placeholder="Title">
+            </div>
+            <div class="form-group">
+                <label for="editActive">Active</label>
+                @if (@blog.Active == true)
+                {
+                    <input type="checkbox" checked id="myCheck">
+                }
+                else
+                {
+                    <input type="checkbox" id="myCheck">
+                }
+
+            </div>
+            <div class="form-group">
+                <label for="editContent"> </label>
+                <textarea id="editContent" class="ckeditor"></textarea>
+            </div>
+            <div class="form-group text-right">
+                <button type="button" class="btn btn-primary" id="editBlog">Mentés</button>
+                <button type="button" class="btn btn-primary" id="close">Mégse</button>
+            </div>
+        </form>
+
+
+        <input style="visibility: collapse;" id="asd" type="text" value="@blog.Content" />
+
+        <script type="text/javascript">
+            $('#close').click(function () {
+                location.href = '/BlogAdmin';
+            });
+           
+
+            $('#editBlog').click(function () {
+                var checkBox = document.getElementById("myCheck");
+                var truefalse = "";
+                if (checkBox.checked == true) {
+                    truefalse = "true";
+                } else {
+                    truefalse = "false";
+                }
+
+                    console.log($('#editContent').val())
+                    
+                    var editedBlog = {
+                        Id: $('#editId').val(),
+                        Title: $('#editTitle').val(),
+                        Author: $('#editAuthor').val(),
+                        Content: CKEDITOR.instances.editContent.getData(),
+                        Active: truefalse
+
+                    };
+                    console.log(editedBlog.Id)
+
+
+
+
+
+                    $.ajax({
+                        url: '/api/blogedit/' + editedBlog.Id,
+                        type: 'PUT',
+                        data: editedBlog,
+                        success: function (result) {
+                            alert("mentve")
+                        }
                     });
-
-
                 });
 
-            </script>
 
-            <br />
+                var x = document.getElementById("asd").value;
+                x.replace('\"\"', '\'\'');
+                console.log("beleír");
+                $(function () {
+                    $("#editContent").html(x);
+                });
 
 
-        </div>
-    
+
+
+
+
+
+
+         
+
+        </script>
+
+
+
+        <br />
+
+
+    </div>
+
 }
 
 
-<!-- SCRIPTS -->
-<script src="../js/jquery.js"></script>
-<script src="../js/bootstrap.min.js"></script>
-<script src="../js/jquery.stellar.min.js"></script>
-<script src="../js/owl.carousel.min.js"></script>
-<script src="../js/smoothscroll.js"></script>
-<script src="../js/custom.js"></script>
-<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
 
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/ckeditor")
+}

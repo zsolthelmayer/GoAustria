@@ -1,5 +1,9 @@
-﻿
+﻿@model IPagedList<GoAustria.Models.Blog>
 @using GoAustria.Models
+@using PagedList;
+@using PagedList.Mvc;
+
+
 @{
     ViewBag.Title = "Index";
 }
@@ -96,54 +100,31 @@
     </div>
 </section>
 
-
-@using (var ctx = new ApplicationDbContext())
-{
-    foreach (var blog in ctx.Blogs)
+<div class="panel panel-body container">
+    @foreach (var model in Model)
     {
-        <div class="panel panel-body container">
+      
 
 
-            <h3 class="text-center">@blog.Title</h3>
-            Készítette: @blog.Author
-            <br>
+        <h3 class="text-center">@Html.DisplayFor(modelItem => model.Title)</h3>
 
-            @Html.Raw(@blog.Content)
-            <input id="asd" type="text" value="@blog.Content" />
+        <br>
 
-            <!--This is the textarea we will be replacing with a CKEditor instance-->
-            <textarea id="Content" class="ckeditor"></textarea>
+        @Html.Raw(model.Content)
 
-         
-
-
-            <script type="text/javascript">
-
-
-                $(document).ready(function () {
-                    var x = document.getElementById("asd").value;
-                    x.replace('\"\"', '\'\'');
-                    $(function () {
-                        $("#Content").html(x);
-                    });
-
-
-                });
-
-            </script>
-
-            <br />
-
-            <a href="Generic/@blog.Id">
-
-                Tovább a cíkhezz.
-            </a>
+        
 
 
 
-        </div>
+
+
+
+
     }
-}
+    @Html.PagedListPager(Model, page => Url.Action("Blog", new { page }))
+</div>
+
+
 
 
 <!-- SCRIPTS -->

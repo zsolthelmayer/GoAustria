@@ -6,12 +6,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
+using PagedList.Mvc;
 
 namespace GoAustria.Controllers
 {
     public class LinkController : Controller
     {        
-    
+        
+   
         public ActionResult Index()
         {
             using (GoAustriaContext db = new GoAustriaContext()) {
@@ -52,11 +55,30 @@ namespace GoAustria.Controllers
 			return View();
 		}
 
-     
+  
 
-        public ActionResult Blog()
+        public ActionResult Blog(int? page)
         {
-            return View();
+            ApplicationDbContext ap = new ApplicationDbContext();
+            List<Blog> lista = new List<Blog>();
+            foreach (var item in ap.Blogs.ToList()) {
+                if (item.Active == true) {
+                    lista.Add(new Blog {
+                        Author = item.Author,
+                        Title = item.Title,
+                        Content = item.Content
+                        
+
+
+                    });
+                }
+            }
+                
+                
+                return View(lista.ToPagedList(page ?? 1,2));
+            
+            
+            
         }
         public ActionResult BlogAdmin()
         {
@@ -67,27 +89,77 @@ namespace GoAustria.Controllers
         {
             return View();
         }
+        public ActionResult BlogEdit()
+        {
+            return View();
+        }
+
+        public ActionResult BlogEditView()
+        {
+            return View();
+        }
+
+        public ActionResult BlogEditList()
+        {
+            return View();
+        }
+
+
+        [ValidateInput(false)]
+        [HttpPost]
+        public ActionResult BlogEdit(Blog b)
+        {
+            if (ModelState.IsValid)
+            {
+
+                using (ApplicationDbContext db = new ApplicationDbContext())
+                {
+                    Blog blog = db.Blogs.SingleOrDefault(s => s.Id == b.Id);
+                    blog.Content = b.Content;
+                    blog.Active = b.Active;
+                    db.SaveChanges();
+
+
+                }
+
+
+            }
+            return View();
+
+        }
+
+
+
 
         public ActionResult Create()
         {
             return View();
         }
+
         [ValidateInput(false)]
         [HttpPost]
         public ActionResult Create(Blog b)
         {
             if (ModelState.IsValid)
             {
+
                 using (var ctx = new ApplicationDbContext())
+
+                using (ApplicationDbContext db = new ApplicationDbContext())
                 {
-                 
-                
+
+
                     ctx.Blogs.Add(b);
                     ctx.SaveChanges();
                     return RedirectToAction("Index");
+
+
                 }
+               
+
             }
             return View();
+
         }
 
         public ActionResult Linkgyujtemeny()
