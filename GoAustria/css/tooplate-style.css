@@ -67,7 +67,7 @@ http://www.tooplate.com/view/2106-soft-landing
   }
 
   a:hover, a:active, a:focus {
-    color: #E04343;
+    color: #43e05d;
     outline: none;
   }
 
@@ -129,14 +129,14 @@ http://www.tooplate.com/view/2106-soft-landing
     width: 60%;
   }
 
-  .online-form button {
-    background: #E04343;
-    border: 0;
-    color: #ffffff;
-    /*position: absolute;*/
-    right: 6em;
-    width: 25%;
-  }
+	.online-form button {
+		background: #43e05d;
+		border: 0;
+		color: #ffffff;
+		/*position: absolute;*/
+		right: 6em;
+		width: 25%;
+	}
 
   .online-form button:hover {
     background: #202020;
@@ -150,7 +150,7 @@ http://www.tooplate.com/view/2106-soft-landing
   -----------------------------------------*/
 
   .section-btn {
-    background: #E04343;
+    background: #43e05d;
     border: 0;
     border-radius: 50px;
     color: #ffffff;
@@ -253,7 +253,7 @@ http://www.tooplate.com/view/2106-soft-landing
 
   .custom-navbar .nav li a:hover {
     background: transparent;
-    color: #E04343;
+    color: #43e05d;
   }
 
   .custom-navbar .navbar-nav > li > a:hover,
@@ -263,7 +263,7 @@ http://www.tooplate.com/view/2106-soft-landing
 
   .custom-navbar .nav li.active > a {
     background-color: transparent;
-    color: #E04343;
+    color: #43e05d;
   }
 
   .custom-navbar .navbar-toggle {
@@ -276,18 +276,20 @@ http://www.tooplate.com/view/2106-soft-landing
   }
 
   .custom-navbar .navbar-toggle .icon-bar {
-    background: #E04343;
+    background: #43e05d;
     border-color: transparent;
   }
 
   @media(min-width:768px) {
     .custom-navbar {
       border-bottom: 0;
-      background: 0 0; 
+      background-color: gray;
+	  opacity: 0.8;
     }
 
     .custom-navbar.top-nav-collapse {
       background: #ffffff;
+	  opacity: 1;
       -webkit-box-shadow: 0 1px 30px rgba(0, 0, 0, 0.1);
       -moz-box-shadow: 0 1px 30px rgba(0, 0, 0, 0.1);
       box-shadow: 0 1px 30px rgba(0, 0, 0, 0.1);
@@ -314,7 +316,7 @@ http://www.tooplate.com/view/2106-soft-landing
   -----------------------------------------*/
 
   #home {
-    background: url('../images/home-bg.jpg') no-repeat center center;
+    background: url('../images/banner2.jpg') no-repeat center center;
     background-size: cover;
     vertical-align: middle;
     display: -webkit-box;
@@ -325,7 +327,7 @@ http://www.tooplate.com/view/2106-soft-landing
     -webkit-align-items: center;
     -ms-flex-align: center;
     align-items: center;
-    min-height: 100vh;
+    min-height: 30vh;
     position: relative;
     /*padding-top: 12em;*/
     text-align: center;
@@ -365,9 +367,13 @@ http://www.tooplate.com/view/2106-soft-landing
       book              
   -----------------------------------------*/
 
-  #book {
-    background: #ffffff;
-  }
+#references {
+	background: #ffffff;
+}
+
+#book {
+	background: #ffffff;
+}
 
   #book .nav-tabs {
     border-bottom: 0;
@@ -391,13 +397,13 @@ http://www.tooplate.com/view/2106-soft-landing
   #book .nav-tabs>li.active>a:hover {
     background: transparent;
     color: #202020;
-    border-bottom: 3px solid #E04343;
+    border-bottom: 3px solid #43e05d;
   }
 
   #book .nav>li>a:focus, 
   #book .nav>li>a:hover {
     background: transparent;
-    border-bottom: 3px solid #E04343;
+    border-bottom: 3px solid #43e05d;
     color: #202020;
   }
 
@@ -425,12 +431,9 @@ http://www.tooplate.com/view/2106-soft-landing
   
   .order-footer{
 	padding: 20px;
-	background-color: #E04343;
+	background-color: #43e05d;
 	width: 100%;	
 	text-align: center;
-    font-weight: bold;
-    letter-spacing: 2px;
-    text-transform: uppercase;
 	color: #fff;
 	
   }
@@ -644,41 +647,9 @@ http://www.tooplate.com/view/2106-soft-landing
       CONTACT             
   -----------------------------------------*/
 
-  #contact-form .col-md-12,
-  #contact-form .col-md-4 {
-    padding-left: 0;
-  }
-
-  #contact-form .form-control {
-    background: transparent;
-    border: 0;
-    border-bottom: 3px solid #f0f0f0;
-    border-radius: 0;
-    box-shadow: none;
-    margin: 10px 0;
-  }
-
-  #contact-form .form-control:focus {
-    border-bottom-color: #202020;
-  }
-
-  #contact-form input {
-    height: 50px;
-  }
-
-  #contact-form input[type='submit'] {
-    background: #202020;
-    border-radius: 50px;
-    border: 0;
-    color: #ffffff;
-  }
-
-  #contact-form input[type='submit']:hover {
-    background: #E04343;
-    color: #ffffff;
-  }
-  
-
+#contact {
+	background-color: #f9f9f9;
+}
 
   /*---------------------------------------
      FOOTER              
@@ -742,7 +713,7 @@ http://www.tooplate.com/view/2106-soft-landing
   }
 
 	.bookBtn {
-		background-color: #E04343;
+		background-color: #43e05d;
 		border: 0;
 		color: white;
 		border-radius: 25px;
@@ -753,7 +724,7 @@ http://www.tooplate.com/view/2106-soft-landing
 	}
 
 	.order-book {
-		background-color: #E04343;
+		background-color: #43e05d;
 		border: 0;
 		color: white;
 		border-radius: 25px;
@@ -903,3 +874,75 @@ http://www.tooplate.com/view/2106-soft-landing
 	}
 
   }
+
+
+
+div#quad {
+	background-color: #000;
+	font-size: 0;
+	width: 60%;
+	margin: 0 auto;
+	box-shadow: 0 0 12px rgba(0,0,0,0.8);
+}
+
+	div#quad figure {
+		margin: 0;
+		width: 50%;
+		height: auto;
+		transition: 1s;
+		display: inline-block;
+		position: relative;
+		overflow: hidden;
+	}
+
+		div#quad figure:hover {
+			cursor: pointer;
+			z-index: 4;
+		}
+
+		div#quad figure img {
+			width: 100%;
+			height: auto;
+		}
+
+		div#quad figure:nth-child(1) {
+			transform-origin: top left;
+		}
+
+		div#quad figure:nth-child(2) {
+			transform-origin: top right;
+		}
+
+		div#quad figure:nth-child(3) {
+			transform-origin: bottom left;
+		}
+
+		div#quad figure:nth-child(4) {
+			transform-origin: bottom right;
+		}
+
+		div#quad figure figcaption {
+			margin: 0;
+			opacity: 0;
+			background: rgba(0,0,0,0.3);
+			color: #fff;
+			padding: .3rem;
+			font-size: 1.2rem;
+			position: absolute;
+			bottom: 0;
+			width: 100%;
+			transition: 1s 1s opacity;
+		}
+
+.expanded {
+	transform: scale(2);
+	z-index: 5;
+}
+
+div#quad figure.expanded figcaption {
+	opacity: 1;
+}
+
+div.full figure:not(.expanded) {
+	pointer-events: none;
+}

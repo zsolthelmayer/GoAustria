@@ -143,6 +143,7 @@
     <Content Include="css\ie\PIE.htc" />
     <Content Include="css\ie\v8.css" />
     <Content Include="css\images\arrow.png" />
+    <Content Include="css\img-gallery.css" />
     <Content Include="css\owl.carousel.css" />
     <Content Include="css\owl.theme.default.min.css" />
     <Content Include="css\skel.css" />
