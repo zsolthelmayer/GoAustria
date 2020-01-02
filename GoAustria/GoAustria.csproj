@@ -172,6 +172,14 @@
     <Content Include="images\team-image2.png" />
     <Content Include="images\team-image3.png" />
     <Content Include="images\welcome.jpg" />
+    <Content Include="images\WP_000180.jpg" />
+    <Content Include="images\WP_000183.jpg" />
+    <Content Include="images\WP_000251.jpg" />
+    <Content Include="images\WP_000259.jpg" />
+    <Content Include="images\WP_000260.jpg" />
+    <Content Include="images\WP_001240.jpg" />
+    <Content Include="images\WP_001246.jpg" />
+    <Content Include="images\WP_001248.jpg" />
     <Content Include="index.html" />
     <Content Include="js\bootstrap.min.js" />
     <Content Include="js\custom.js" />

@@ -431,11 +431,11 @@ http://www.tooplate.com/view/2106-soft-landing
   
   .order-footer{
 	padding: 20px;
-	background-color: #43e05d;
+	background-color: gray;
 	width: 100%;	
 	text-align: center;
 	color: #fff;
-	
+	opacity: 0.7;
   }
   
   .scope-number{
@@ -496,7 +496,7 @@ http://www.tooplate.com/view/2106-soft-landing
 
   .team-info {
     position: relative;
-    padding: 40px;
+    /*padding: 40px;*/
   }
 
   .team-info h2 {margin: 0;}
@@ -945,4 +945,12 @@ div#quad figure.expanded figcaption {
 
 div.full figure:not(.expanded) {
 	pointer-events: none;
+}
+
+.linkbutton {
+	background-color: #43e05d;
+	color: white;
+	padding: 1em 1.5em;
+	text-decoration: none;
+	border-radius: 30pt;
 }
