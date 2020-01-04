@@ -163,6 +163,12 @@
     <Content Include="images\feature-mockup.png" />
     <Content Include="images\guarantee.png" />
     <Content Include="images\home-bg.jpg" />
+    <Content Include="images\kert1.jpg" />
+    <Content Include="images\kert2.jpg" />
+    <Content Include="images\kert3.jpg" />
+    <Content Include="images\kert4.jpg" />
+    <Content Include="images\kert5.jpg" />
+    <Content Include="images\kert6.jpg" />
     <Content Include="images\notebook.jpg" />
     <Content Include="images\pic01.jpg" />
     <Content Include="images\pic02.jpg" />
