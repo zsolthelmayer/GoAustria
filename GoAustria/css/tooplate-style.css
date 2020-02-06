@@ -954,3 +954,16 @@ div.full figure:not(.expanded) {
 	text-decoration: none;
 	border-radius: 30pt;
 }
+
+.linkbutton:hover {
+    background-color: #43e05d;
+    color: black;
+    padding: 1em 1.5em;
+    text-decoration: none;
+    border-radius: 30pt;
+}
+
+#interest:hover {
+    background-color: #43e05d;
+    color: black;
+}
