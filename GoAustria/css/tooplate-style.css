@@ -15,6 +15,11 @@ http://www.tooplate.com/view/2106-soft-landing
   }
 
 
+font {
+    font-family: 'Open Sans', sans-serif;
+    color: #fff;
+    font-weight: 300;
+}
 
   /*---------------------------------------
      TYPOGRAPHY              
@@ -27,11 +32,6 @@ http://www.tooplate.com/view/2106-soft-landing
 
   h1 {
     font-size: 3em;
-  }
-
-  h2 {
-    color: #353535;
-    font-size: 2em;
   }
 
   h4, h6	{
@@ -225,7 +225,7 @@ http://www.tooplate.com/view/2106-soft-landing
   .custom-navbar {
     border: none;
     margin-bottom: 0;
-    padding: 25px 0;
+    padding: 10px 0;
   }
 
   .custom-navbar .navbar-brand {
